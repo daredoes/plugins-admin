@@ -99,7 +99,11 @@ def reload_plugins(message):
         os.chdir("..")
         os.chdir("slackbot")
         os.chdir("plugins")
-        message.send(str(subprocess.call('bash update.sh', cwd=os.getcwd(), shell=True)))
+        ret = subprocess.call('bash update.sh', cwd=os.getcwd(), shell=True)
+        if ret == 0:
+            message.send("Plugins Reloaded")
+        else:
+            message.send("Something failed with the error code %s" % ret)
 
 r_plug_f = '\\breload plugin\\b %s' % till_white
 @listen_to(r_plug_f, re.IGNORECASE)
@@ -110,6 +114,10 @@ def reload_plugin(message, plugin):
         os.chdir("..")
         os.chdir("slackbot")
         os.chdir("plugins")
-        message.send(str(subprocess.call('bash update.sh %s' % plugin, cwd=os.getcwd(), shell=True)))
+        ret = subprocess.call('bash update.sh %s' % plugin, cwd=os.getcwd(), shell=True)
+        if ret == 0:
+            message.send("Plugin Reloaded")
+        else:
+            message.send("Something failed with the error code %s" % ret)
 
 
