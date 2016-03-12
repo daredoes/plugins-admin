@@ -7,6 +7,7 @@ import re
 import os
 import time
 import random
+import subprocess
 try:
     db = attributes['db']
 except KeyError:
@@ -97,7 +98,7 @@ def reload_plugins(message):
         os.chdir(root)
         os.chdir("..")
         os.chdir("plugins")
-        os.system('bash update.sh')
+        message.send(subprocess.call('bash update.sh'))
         reload_self(message)
 
 r_plug_f = '\\breload plugin\\b %s' % till_white
@@ -108,7 +109,7 @@ def reload_plugin(message, plugin):
         os.chdir(root)
         os.chdir("..")
         os.chdir("plugins")
-        os.system('bash update.sh %s' % plugin)
+        message.send(subprocess.call('bash update.sh %s' % plugin))
         time.sleep(3)
         reload_self(message)
 
