@@ -87,7 +87,7 @@ def reload_self(message):
         if "hiss" in text.lower():
             text = text.replace("ss", "s" * random.randint(2,10))
         message.send(text)
-        os.system('sh start.sh')
+        os.system('bash start.sh')
 
 r_plug = '\\breload plugins$'
 @listen_to(r_plug, re.IGNORECASE)
@@ -97,7 +97,7 @@ def reload_plugins(message):
         os.chdir(root)
         os.chdir("..")
         os.chdir("plugins")
-        os.system('sh update.sh')
+        os.system('bash update.sh')
         reload_self(message)
 
 r_plug_f = '\\breload plugin\\b %s' % till_white
@@ -108,7 +108,7 @@ def reload_plugin(message, plugin):
         os.chdir(root)
         os.chdir("..")
         os.chdir("plugins")
-        os.system('sh update.sh %s' % plugin)
+        os.system('bash update.sh %s' % plugin)
         time.sleep(3)
         reload_self(message)
 
