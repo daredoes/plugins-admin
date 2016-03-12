@@ -87,7 +87,6 @@ def reload_self(message):
         if "hiss" in text.lower():
             text = text.replace("ss", "s" * random.randint(2,10))
         message.send(text)
-        message.send(os.getcwd())
         os.system('bash reload.sh')
 
 r_plug = '\\breload plugins$'
