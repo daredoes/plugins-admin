@@ -97,12 +97,7 @@ def reload_plugins(message):
         os.chdir(root)
         os.chdir("..")
         os.chdir("plugins")
-        folders = get_immediate_subdirectories(str(os.getcwd()))
-        for folder in folders:
-            os.chdir(folder)
-            os.system("git pull")
-            os.chdir("..")
-        time.sleep(1.5 * len(folders))
+        os.system('sh update.sh')
         reload_self(message)
 
 r_plug_f = '\\breload plugin\\b %s' % till_white
@@ -113,8 +108,7 @@ def reload_plugin(message, plugin):
         os.chdir(root)
         os.chdir("..")
         os.chdir("plugins")
-        os.chdir(plugin)
-        os.system('git pull')
+        os.system('sh update.sh %s' % plugin)
         time.sleep(3)
         reload_self(message)
 
