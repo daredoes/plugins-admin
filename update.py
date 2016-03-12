@@ -100,7 +100,6 @@ def reload_plugins(message):
         os.chdir("slackbot")
         os.chdir("plugins")
         message.send(str(subprocess.call('bash update.sh', cwd=os.getcwd(), shell=True)))
-        reload_self(message)
 
 r_plug_f = '\\breload plugin\\b %s' % till_white
 @listen_to(r_plug_f, re.IGNORECASE)
@@ -112,7 +111,5 @@ def reload_plugin(message, plugin):
         os.chdir("slackbot")
         os.chdir("plugins")
         message.send(str(subprocess.call('bash update.sh %s' % plugin, cwd=os.getcwd(), shell=True)))
-        time.sleep(3)
-        reload_self(message)
 
 
