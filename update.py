@@ -97,6 +97,7 @@ def reload_plugins(message):
     if is_approved(message, 'admin'):
         os.chdir(root)
         os.chdir("..")
+        os.chdir("slackbot")
         os.chdir("plugins")
         message.send(subprocess.call('bash update.sh'))
         reload_self(message)
@@ -108,6 +109,7 @@ def reload_plugin(message, plugin):
     if is_approved(message, 'admin'):
         os.chdir(root)
         os.chdir("..")
+        os.chdir("slackbot")
         os.chdir("plugins")
         message.send(subprocess.call('bash update.sh %s' % plugin))
         time.sleep(3)
