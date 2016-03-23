@@ -1,6 +1,6 @@
 from slackbot.bot import respond_to
 from slackbot.bot import listen_to
-from slackbot.plugins.admin.perms import is_approved
+from plugins.admin.perms import is_approved
 from slackbot.globals import attributes
 from slackbot.utils import download_file, create_tmp_file, till_white, till_end
 import re
@@ -119,5 +119,3 @@ def reload_plugin(message, plugin):
             message.send("Plugin Reloaded")
         else:
             message.send("Something failed with the error code %s" % ret)
-
-
