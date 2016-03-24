@@ -83,7 +83,6 @@ k_self = '\\bkillurself$'
 @respond_to(k_self, re.IGNORECASE)
 def reload_self(message):
     if is_approved(message, 'admin'):
-        os.chdir(root)
         text = random.choice(goodbyes)
         if "hiss" in text.lower():
             text = text.replace("ss", "s" * random.randint(2,10))
@@ -95,9 +94,6 @@ r_plug = '\\breload plugins$'
 @respond_to(r_plug, re.IGNORECASE)
 def reload_plugins(message):
     if is_approved(message, 'admin'):
-        os.chdir(root)
-        os.chdir("..")
-        os.chdir("slackbot")
         os.chdir("plugins")
         ret = subprocess.call('bash update.sh', cwd=os.getcwd(), shell=True)
         if ret == 0:
@@ -110,9 +106,6 @@ r_plug_f = '\\breload plugin\\b %s' % till_white
 @respond_to(r_plug_f, re.IGNORECASE)
 def reload_plugin(message, plugin):
     if is_approved(message, 'admin'):
-        os.chdir(root)
-        os.chdir("..")
-        os.chdir("slackbot")
         os.chdir("plugins")
         ret = subprocess.call('bash update.sh %s' % plugin, cwd=os.getcwd(), shell=True)
         if ret == 0:
