@@ -94,8 +94,10 @@ r_plug = '\\breload plugins$'
 @respond_to(r_plug, re.IGNORECASE)
 def reload_plugins(message):
     if is_approved(message, 'admin'):
+        start = os.getcwd()
         os.chdir("plugins")
         ret = subprocess.call('bash update.sh', cwd=os.getcwd(), shell=True)
+        os.chdir(start)
         if ret == 0:
             message.send("Plugins Reloaded")
         else:
@@ -106,8 +108,10 @@ r_plug_f = '\\breload plugin\\b %s' % till_white
 @respond_to(r_plug_f, re.IGNORECASE)
 def reload_plugin(message, plugin):
     if is_approved(message, 'admin'):
+        start = os.getcwd()
         os.chdir("plugins")
         ret = subprocess.call('bash update.sh %s' % plugin, cwd=os.getcwd(), shell=True)
+        os.chdir(start)
         if ret == 0:
             message.send("Plugin Reloaded")
         else:
