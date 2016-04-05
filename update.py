@@ -77,8 +77,8 @@ def get_immediate_subdirectories(a_dir):
 
 r_self = '\\bdie$'
 k_self = '\\bkillurself$'
-@listen_to(r_self, re.IGNORECASE)
-@listen_to(k_self, re.IGNORECASE)
+#@listen_to(r_self, re.IGNORECASE)
+#@listen_to(k_self, re.IGNORECASE)
 @respond_to(r_self, re.IGNORECASE)
 @respond_to(k_self, re.IGNORECASE)
 def reload_self(message):
@@ -90,7 +90,7 @@ def reload_self(message):
         os.system('bash reload.sh')
 
 r_plug = '\\breload plugins$'
-@listen_to(r_plug, re.IGNORECASE)
+#@listen_to(r_plug, re.IGNORECASE)
 @respond_to(r_plug, re.IGNORECASE)
 def reload_plugins(message):
     if is_approved(message, 'admin'):
@@ -104,7 +104,7 @@ def reload_plugins(message):
             message.send("Something failed with the error code %s" % ret)
 
 r_plug_f = '\\breload plugin\\b %s' % till_white
-@listen_to(r_plug_f, re.IGNORECASE)
+#@listen_to(r_plug_f, re.IGNORECASE)
 @respond_to(r_plug_f, re.IGNORECASE)
 def reload_plugin(message, plugin):
     if is_approved(message, 'admin'):

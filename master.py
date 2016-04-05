@@ -31,7 +31,7 @@ goodbyes = [
 ]
 
 a_users = "\\bapproved users\\b"
-@listen_to(a_users, re.IGNORECASE)
+#@listen_to(a_users, re.IGNORECASE)
 @respond_to(a_users, re.IGNORECASE)
 def approved(message):
     app = []
@@ -53,7 +53,7 @@ def approved(message):
 
 
 a_user = '\\bapprove user\\b %s %s' % (till_white, till_white)
-@listen_to(a_user, re.IGNORECASE)
+#@listen_to(a_user, re.IGNORECASE)
 @respond_to(a_user, re.IGNORECASE)
 def add_user(message, user, permission):
     if is_approved(message, 'admin'):
@@ -73,7 +73,7 @@ def add_user(message, user, permission):
 
 
 r_user = '\\bremove user\\b %s %s' % (till_white, till_white)
-@listen_to(r_user, re.IGNORECASE)
+#@listen_to(r_user, re.IGNORECASE)
 @respond_to(r_user, re.IGNORECASE)
 def add_user(message, user, permission):
     if is_approved(message, 'admin'):
@@ -92,7 +92,7 @@ def add_user(message, user, permission):
 
 
 test = "test$"
-@listen_to(test, re.IGNORECASE)
+#@listen_to(test, re.IGNORECASE)
 @respond_to(test, re.IGNORECASE)
 def test(message):
     if is_approved(message, "admin"):
